@@ -1,10 +1,10 @@
 // CONFIGURATION
 const USE_MOCK_API = false;
 
-// Managed Azure Functions API Base URL
+// Managed Azure Functions API Base URL - Updated to relative routing path for your active deployment
 const API_BASE_URL = window.location.origin.includes('localhost')
   ? 'http://localhost:7071/api'
-  : 'https://fn-tickettriage-11669.azurewebsites.net/api';
+  : window.location.origin + '/api';
 
 // DOM ELEMENTS
 const ticketForm = document.getElementById('ticketForm');
@@ -22,7 +22,7 @@ const statusMessage = document.getElementById('statusMessage');
 
 // FORM VALIDATION
 function validateEmail(email) {
-  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+\$/;
   return emailRegex.test(email);
 }
 
@@ -75,7 +75,7 @@ function validateForm() {
 
 // UI FEEDBACK HELPERS
 function showMessage(type, text) {
-  statusMessage.className = `message-banner ${type}`;
+  statusMessage.className = `message-banner \${type}`;
   statusMessage.textContent = text;
   statusMessage.classList.remove('hidden');
   statusMessage.scrollIntoView({ behavior: 'smooth', block: 'start' });
