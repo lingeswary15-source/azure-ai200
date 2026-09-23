@@ -20,11 +20,11 @@ const btnSuggestCategory = document.getElementById('btnSuggestCategory');
 const categoryHint = document.getElementById('categoryHint');
 const statusMessage = document.getElementById('statusMessage');
 
-// FORM VALIDATION
 function validateEmail(email) {
-  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+\$/;
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   return emailRegex.test(email);
 }
+
 
 function clearValidationErrors() {
   document.querySelectorAll('.error-text').forEach((el) => (el.textContent = ''));
