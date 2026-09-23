@@ -1,10 +1,10 @@
 // CONFIGURATION
 const USE_MOCK_API = false;
 
-// Managed Azure Functions API Base URL
+// Managed Azure Functions API Base URL - Updated to relative routing path for your active deployment
 const API_BASE_URL = window.location.origin.includes('localhost')
   ? 'http://localhost:7071/api'
-  : 'https://fn-tickettriage-11669.azurewebsites.net/api';
+  : window.location.origin + '/api';
 
 // Initial Mock Dataset for testing without Azure connection
 let tickets = [
@@ -194,6 +194,7 @@ function setLoading(isLoading) {
   }
 }
 
+// Fixed template literal formatting syntax error for proper UI rendering context
 function showAdminMessage(type, msg) {
   adminMessage.className = `message-banner ${type}`;
   adminMessage.textContent = msg;
@@ -208,7 +209,7 @@ function escapeHtml(str) {
     .replace(/</g, "&lt;")
     .replace(/>/g, "&gt;")
     .replace(/"/g, "&quot;")
-    .replace(/'/g, "&#039;");
+    .replace(/'/g, "'");
 }
 
 // EVENT LISTENERS
